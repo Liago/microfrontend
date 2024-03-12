@@ -1,0 +1,26 @@
+version: '3.8'
+services:
+  app-host:
+    build: ./app-container
+    ports:
+      - "80:80"
+    networks:
+      - microfrontend-network
+
+  app-1:
+    build: ./app-1
+    ports:
+      - "81:80"
+    networks:
+      - microfrontend-network
+
+  app-2:
+    build: ./app-2
+    ports:
+      - "82:80"
+    networks:
+      - microfrontend-network
+
+networks:
+  microfrontend-network:
+    driver: bridge
