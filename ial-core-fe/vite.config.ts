@@ -16,15 +16,24 @@ export default defineConfig({
     }),
   ],
   build: {
-    // lib: {
-    //   entry: "./src/index.tsx",
-    //   name: "mfa",
-    //   fileName: (format) => `mfa.${format}.js`,
-    //   formats:["es"]
-    // },
+    outDir: "dist",
+    rollupOptions: {
+      input: {
+        main: "./src/mfa.js",
+      },
+      external: ["react", "react-dom"],
+      output: {
+        globals: {
+          react: "React",
+          "react-dom": "ReactDOM",
+        },
+        dir: "dist",
+        entryFileNames: "mfa.js",
+      },
+    },
     target: "esnext",
   },
-  // define: {
-  //   "process.env": {},
-  // },
+  server: {
+    port: 4000,
+  },
 });

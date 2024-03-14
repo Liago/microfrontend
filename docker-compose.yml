@@ -1,21 +1,21 @@
 version: '3.8'
 services:
-  app-host:
-    build: ./app-container
+  ial-core-fe:
+    build: ./ial-core-fe
     ports:
       - "80:80"
     networks:
       - microfrontend-network
 
-  app-1:
-    build: ./app-1
+  ial-get-fe:
+    build: ./ial-get-fe
     ports:
       - "81:80"
     networks:
       - microfrontend-network
 
-  app-2:
-    build: ./app-2
+  ial-svg-fe:
+    build: ./ial-svg-fe
     ports:
       - "82:80"
     networks:
