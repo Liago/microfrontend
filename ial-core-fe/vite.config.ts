@@ -15,4 +15,16 @@ export default defineConfig({
       shared: ["react", "react-dom"],
     }),
   ],
+  build: {
+    // lib: {
+    //   entry: "./src/index.tsx",
+    //   name: "mfa",
+    //   fileName: (format) => `mfa.${format}.js`,
+    //   formats:["es"]
+    // },
+    target: "esnext",
+  },
+  // define: {
+  //   "process.env": {},
+  // },
 });
