@@ -1,26 +1,35 @@
-version: '3.8'
+version: "3"
 services:
   ial-core-fe:
-    build: ./ial-core-fe
+    image: ial-core-fe
+    build:
+      context: ./ial-core-fe
+      dockerfile: Dockerfile
     ports:
-      - "80:80"
+      - "5050:80"
     networks:
-      - microfrontend-network
+      - ial-microfrontend
 
   ial-get-fe:
-    build: ./ial-get-fe
+    image: ial-get-fe
+    build:
+      context: ./ial-get-fe
+      dockerfile: Dockerfile
     ports:
-      - "81:80"
+      - "5300:80"
     networks:
-      - microfrontend-network
+      - ial-microfrontend
 
   ial-svg-fe:
-    build: ./ial-svg-fe
+    image: ial-svg-fe
+    build:
+      context: ./ial-svg-fe
+      dockerfile: Dockerfile
     ports:
-      - "82:80"
+      - "5200:80"
     networks:
-      - microfrontend-network
+      - ial-microfrontend
 
 networks:
-  microfrontend-network:
+  ial-microfrontend:
     driver: bridge
