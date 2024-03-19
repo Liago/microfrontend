@@ -7,7 +7,7 @@ const Table = lazy(() => import("table-app/Table"));
 
 export const IalCoreFe = () => {
   const onClickHandler = () => {
-    console.log("click");
+    console.log("[IAL-CORE-FE] click!");
   };
   return (
     <div>
@@ -15,7 +15,7 @@ export const IalCoreFe = () => {
       <Suspense fallback={<LoadingSpinner />}>
         <LoginForm otherProp="PEANUTS!" onSubmitHandler={onClickHandler} />
       </Suspense>
-      <hr />
+      <hr style={{ margin: "50px 0" }} />
       <Suspense fallback={<LoadingSpinner />}>
         <Table />
       </Suspense>

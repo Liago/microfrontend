@@ -12,12 +12,15 @@ export default defineConfig({
       exposes: {
         "./LoginForm": "./src/components/LoginForm",
       },
+      remotes: {
+        "main-app": "http://localhost:5050/assets/remoteEntry.js",
+      },
     }),
   ],
   build: {
-    target: "esnext", // needed to final build
-    minify: false,
-    cssCodeSplit: false,
+    target: "esnext",
+    minify: true,
+    cssCodeSplit: true,
   },
   server: {
     port: 5200,

@@ -1,6 +1,12 @@
 import ReactDOM from "react-dom/client";
 import App from "./App";
 
+interface AppProps {
+  transactionId: string | null;
+  authorizationToken: string | null;
+  disableResultPage: boolean | false;
+}
+
 class MfaDesktop extends HTMLElement {
   constructor() {
     super();
@@ -10,17 +16,23 @@ class MfaDesktop extends HTMLElement {
   connectedCallback() {
     const transactionId = this.getAttribute("transactionId");
     const authorizationToken = this.getAttribute("authorizationToken");
-    const disableResultPage =
-      this.getAttribute("disableResultPage") === "true" ? true : false;
+    const disableResultPage = this.getAttribute("disableResultPage") === "true";
+
+    console.log("attributes", {
+      transactionId,
+      authorizationToken,
+      disableResultPage,
+    });
 
     const root = ReactDOM.createRoot(this.shadowRoot as ShadowRoot);
-    root.render(
-      <App
-        transactionId={transactionId}
-        authorizationToken={authorizationToken}
-        disableResultPage={disableResultPage}
-      />,
-    );
+
+    const appProps: AppProps = {
+      transactionId: transactionId || null,
+      authorizationToken: authorizationToken || null,
+      disableResultPage: disableResultPage || false,
+    };
+
+    root.render(<App {...appProps} />);
   }
 }
 

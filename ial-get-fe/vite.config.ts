@@ -16,8 +16,8 @@ export default defineConfig({
   ],
   build: {
     target: "esnext", // needed to final build
-    minify: false,
-    cssCodeSplit: false,
+    minify: true,
+    cssCodeSplit: true,
   },
   server: {
     port: 5300,
