@@ -15,6 +15,7 @@ export default defineConfig({
       remotes: {
         "main-app": "http://localhost:5050/assets/remoteEntry.js",
       },
+      shared: ["react", "react-dom", "antd"],
     }),
   ],
   build: {

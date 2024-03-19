@@ -10,17 +10,15 @@ export default defineConfig({
     federation({
       name: "main-app",
       filename: "remoteEntry.js",
-      // exposes: {
-      //   "./mfa.css": "./src/index.css",
-      // },
       exposes: {
         "./tailwind.css": "./src/tailwind.css.js",
+        // "./mfa.css": "./src/index.css",
       },
       remotes: {
         "table-app": "http://localhost:5300/assets/remoteEntry.js",
         "login-form-app": "http://localhost:5200/assets/remoteEntry.js",
       },
-      shared: ["react", "react-dom"],
+      shared: ["react", "react-dom", "antd"],
     }),
   ],
   build: {
@@ -32,7 +30,7 @@ export default defineConfig({
       output: {
         dir: "dist",
         entryFileNames: "mfa.js",
-        //assetFileNames: "mfa.[ext]",
+        // assetFileNames: "mfa.[ext]",
       },
     },
     target: "esnext",
@@ -41,6 +39,11 @@ export default defineConfig({
     port: 5050,
   },
   css: {
+    preprocessorOptions: {
+      less: {
+        javascriptEnabled: true,
+      },
+    },
     postcss: {
       plugins: [tailwindcss, autoprefixer],
     },

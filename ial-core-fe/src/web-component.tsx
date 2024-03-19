@@ -18,7 +18,7 @@ class MfaDesktop extends HTMLElement {
     const authorizationToken = this.getAttribute("authorizationToken");
     const disableResultPage = this.getAttribute("disableResultPage") === "true";
 
-    console.log("attributes", {
+    console.log("MFADesktop attributes", {
       transactionId,
       authorizationToken,
       disableResultPage,

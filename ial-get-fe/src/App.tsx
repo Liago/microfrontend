@@ -4,7 +4,7 @@ import Table from "./components/Table";
 function App() {
   return (
     <>
-      <h1>IAL GET FE</h1>
+      <h1 className="text-2xl">IAL GET FE</h1>
       <Table />
     </>
   );

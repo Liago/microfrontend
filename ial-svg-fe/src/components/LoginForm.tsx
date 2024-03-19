@@ -1,3 +1,5 @@
+import { Button } from "antd";
+
 interface Props {
   onSubmitHandler: () => void;
   otherProp: string;
@@ -41,6 +43,7 @@ const LoginForm = ({ onSubmitHandler, otherProp }: Props) => {
         </div>
       </div>
       <button onClick={onSubmitHandler}>Login</button>
+      <Button>AntDesign button</Button>
     </>
   );
 };
