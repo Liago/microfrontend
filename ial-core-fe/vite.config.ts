@@ -12,7 +12,6 @@ export default defineConfig({
       filename: "remoteEntry.js",
       exposes: {
         "./tailwind.css": "./src/tailwind.css.js",
-        // "./mfa.css": "./src/index.css",
       },
       remotes: {
         "table-app": "http://localhost:5300/assets/remoteEntry.js",
@@ -30,7 +29,6 @@ export default defineConfig({
       output: {
         dir: "dist",
         entryFileNames: "mfa.js",
-        // assetFileNames: "mfa.[ext]",
       },
     },
     target: "esnext",

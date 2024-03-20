@@ -1,24 +1,78 @@
-const Table = () => {
+import { Avatar, Button, Table } from "antd";
+import { ColumnsType } from "antd/lib/table";
+import React, { useEffect, useState } from "react";
+
+interface User {
+  name: {
+    first: string;
+    last: string;
+  };
+  email: string;
+  phone: string;
+  picture: {
+    medium: string;
+  };
+  login: {
+    uuid: string;
+  };
+}
+
+const UserTable: React.FC = () => {
+  const [users, setUsers] = useState<User[]>([]);
+  const [loading, setLoading] = useState<boolean>(false);
+
+  useEffect(() => {
+    fetchUsers();
+  }, []);
+
+  const fetchUsers = async () => {
+    setLoading(true);
+    try {
+      const response = await fetch("https://randomuser.me/api/?results=10");
+      const data = await response.json();
+      setUsers(data.results);
+      setLoading(false);
+    } catch (error) {
+      console.error("Error fetching users:", error);
+      setLoading(false);
+    }
+  };
+
+  const columns: ColumnsType<User> = [
+    {
+      title: "Avatar",
+      dataIndex: "picture",
+      render: (picture) => <Avatar src={picture.medium} />,
+    },
+    {
+      title: "Name",
+      dataIndex: "name",
+      render: (name) => `${name.first} ${name.last}`,
+    },
+    {
+      title: "Email",
+      dataIndex: "email",
+    },
+    {
+      title: "Phone",
+      dataIndex: "phone",
+    },
+  ];
+
   return (
-    <table>
-      <thead>
-        <tr className="border-4 border-red-500 text-xl text-green-600">
-          <th>Column 1</th>
-          <th>Column 2</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr className="border-b-4 border-gray-800">
-          <td>Row 1, Cell 1</td>
-          <td>Row 1, Cell 2</td>
-        </tr>
-        <tr>
-          <td>Row 2, Cell 1</td>
-          <td>Row 2, Cell 2</td>
-        </tr>
-      </tbody>
-    </table>
+    <>
+      <Table<User>
+        dataSource={users}
+        columns={columns}
+        loading={loading}
+        rowKey={(user) => user.login.uuid}
+        pagination={false}
+      />
+      <Button onClick={fetchUsers} loading={loading}>
+        Refresh
+      </Button>
+    </>
   );
 };
 
-export default Table;
+export default UserTable;

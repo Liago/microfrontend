@@ -12,10 +12,14 @@ export default defineConfig({
       exposes: {
         "./Table": "./src/components/Table",
       },
+      remotes: {
+        "main-app": "http://localhost:5050/assets/remoteEntry.js",
+      },
+      shared: ["react", "react-dom", "antd"],
     }),
   ],
   build: {
-    target: "esnext", // needed to final build
+    target: "esnext",
     minify: true,
     cssCodeSplit: true,
   },
