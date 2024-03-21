@@ -1,4 +1,4 @@
-import { Typography, Button, Divider } from "antd";
+import { Typography, Divider } from "antd";
 import { Suspense, lazy } from "react";
 import ErrorBoundary from "./components/ErrorsApp";
 import LoadingSpinner from "./components/LoadingSpinner";
