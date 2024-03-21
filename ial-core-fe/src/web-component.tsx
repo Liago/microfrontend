@@ -1,4 +1,5 @@
-import ReactDOM from "react-dom/client";
+import { createElement } from "react";
+import * as ReactDOM from "react-dom";
 import App from "./App";
 
 interface AppProps {
@@ -8,11 +9,6 @@ interface AppProps {
 }
 
 class MfaDesktop extends HTMLElement {
-  constructor() {
-    super();
-    this.attachShadow({ mode: "open" });
-  }
-
   connectedCallback() {
     const transactionId = this.getAttribute("transactionId");
     const authorizationToken = this.getAttribute("authorizationToken");
@@ -24,15 +20,13 @@ class MfaDesktop extends HTMLElement {
       disableResultPage,
     });
 
-    const root = ReactDOM.createRoot(this.shadowRoot as ShadowRoot);
-
     const appProps: AppProps = {
       transactionId: transactionId || null,
       authorizationToken: authorizationToken || null,
       disableResultPage: disableResultPage || false,
     };
 
-    root.render(<App {...appProps} />);
+    ReactDOM.render(createElement(App, { ...appProps }), this);
   }
 }
 

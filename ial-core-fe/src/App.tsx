@@ -1,6 +1,5 @@
-import { Typography } from "antd";
+import { Typography, Button, Divider } from "antd";
 import { Suspense, lazy } from "react";
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 import ErrorBoundary from "./components/ErrorsApp";
 import LoadingSpinner from "./components/LoadingSpinner";
 
@@ -15,34 +14,19 @@ export const IalCoreFe = () => {
   const { Title } = Typography;
 
   return (
-    <Router>
-      <div>
-        <Title level={2}>h2. Ant Design</Title>
-        <h1 className="text- p-b pb pb-8 text-red-400">Main App</h1>
-        <Routes>
-          <Route
-            path="/login"
-            element={
-              <Suspense fallback={<LoadingSpinner />}>
-                <LoginForm
-                  lo
-                  otherProp="PEANUTS!"
-                  onSubmitHandler={onClickHandler}
-                />
-              </Suspense>
-            }
-          />
-          <Route
-            path="/users"
-            element={
-              <Suspense fallback={<LoadingSpinner />}>
-                <Table />
-              </Suspense>
-            }
-          />
-        </Routes>
-      </div>
-    </Router>
+    <div>
+      <Title level={2}>h2. Ant Design</Title>
+      <h1 className="text- p-b pb pb-8 text-red-400">Main App</h1>
+      <Divider />
+      <Button>ANT Button</Button>
+      <Divider />
+      <Suspense fallback={<LoadingSpinner />}>
+        <LoginForm lo otherProp="PEANUTS!" onSubmitHandler={onClickHandler} />
+      </Suspense>
+      <Suspense fallback={<LoadingSpinner />}>
+        <Table />
+      </Suspense>
+    </div>
   );
 };
 
