@@ -18,11 +18,14 @@ export const IalCoreFe = () => {
       <Title level={2}>h2. Ant Design</Title>
       <h1 className="text- p-b pb pb-8 text-red-400">Main App</h1>
       <Divider />
-      <Button>ANT Button</Button>
+      <Title level={1}>h1. IAL SVG FE </Title>
       <Divider />
       <Suspense fallback={<LoadingSpinner />}>
         <LoginForm lo otherProp="PEANUTS!" onSubmitHandler={onClickHandler} />
       </Suspense>
+      <Divider />
+      <Title level={1}>h1. IAL GET FE </Title>
+      <Divider />
       <Suspense fallback={<LoadingSpinner />}>
         <Table />
       </Suspense>
